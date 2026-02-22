@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import SectionHeading from '@/src/components/SectionHeading';
-import { Phone, Mail, MapPin, Clock, Send, ShieldCheck, Target, Eye } from 'lucide-react';
-import { motion } from 'motion/react';
+import { Phone, Mail, MapPin, Clock, Send, ShieldCheck, Target, Eye, CheckCircle2, Award, Zap, HeartHandshake } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function About() {
   const { hash } = useLocation();
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
   useEffect(() => {
     if (hash) {
@@ -15,6 +16,12 @@ export default function About() {
       }
     }
   }, [hash]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    setTimeout(() => setFormStatus('success'), 1500);
+  };
 
   return (
     <main className="pt-20">
@@ -71,6 +78,60 @@ export default function About() {
               <p className="text-gray-500 leading-relaxed">
                 Integrity, Excellence, Professionalism, and Customer Satisfaction are the pillars of our business operations.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <SectionHeading 
+                align="left"
+                subtitle="Why Choose Us"
+                title="Setting New Standards in the Industry"
+                description="We combine years of experience with a passion for excellence to deliver results that matter."
+              />
+              
+              <div className="space-y-6">
+                {[
+                  { icon: Award, title: "Award-Winning Excellence", desc: "Recognized for our commitment to quality and architectural innovation." },
+                  { icon: Zap, title: "Fast & Efficient Delivery", desc: "We respect your time and ensure projects are completed within agreed timelines." },
+                  { icon: HeartHandshake, title: "Client-Centric Approach", desc: "Your satisfaction is our priority. We work closely with you at every stage." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-6">
+                    <div className="w-14 h-14 bg-brand-blue/5 rounded-2xl flex items-center justify-center text-brand-blue shrink-0">
+                      <item.icon size={28} />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-brand-dark mb-2">{item.title}</h4>
+                      <p className="text-gray-500 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="rounded-[3rem] overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=800" 
+                  alt="Modern Construction" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="absolute -bottom-10 -left-10 bg-white p-10 rounded-[2rem] shadow-xl border border-gray-100 hidden md:block">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                    <CheckCircle2 size={24} />
+                  </div>
+                  <div className="text-2xl font-bold text-brand-dark">100% Secure</div>
+                </div>
+                <p className="text-gray-500 text-sm">All our properties are legally<br/>verified and RC certified.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -189,48 +250,84 @@ export default function About() {
               </div>
 
               {/* Contact Form */}
-              <div className="p-12 md:p-20">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700">Full Name</label>
-                      <input 
-                        type="text" 
-                        placeholder="John Doe"
-                        className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label className="text-sm font-bold text-gray-700">Email Address</label>
-                      <input 
-                        type="email" 
-                        placeholder="john@example.com"
-                        className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700">Subject</label>
-                    <select className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all appearance-none">
-                      <option>Property Inquiry</option>
-                      <option>Construction Project</option>
-                      <option>Consultancy</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700">Message</label>
-                    <textarea 
-                      rows={5}
-                      placeholder="How can we help you?"
-                      className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all resize-none"
-                    ></textarea>
-                  </div>
-                  <button className="w-full py-5 bg-brand-orange text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-brand-orange/90 transition-all shadow-xl shadow-brand-orange/20">
-                    Send Message
-                    <Send size={20} />
-                  </button>
-                </form>
+              <div className="p-12 md:p-20 relative">
+                <AnimatePresence mode="wait">
+                  {formStatus === 'success' ? (
+                    <motion.div 
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="h-full flex flex-col items-center justify-center text-center space-y-6 py-12"
+                    >
+                      <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center">
+                        <CheckCircle2 size={48} />
+                      </div>
+                      <h3 className="text-3xl font-bold text-brand-dark">Message Sent!</h3>
+                      <p className="text-gray-500">Thank you for reaching out. Our team will contact you shortly.</p>
+                      <button 
+                        onClick={() => setFormStatus('idle')}
+                        className="text-brand-blue font-bold hover:underline"
+                      >
+                        Send another message
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.form 
+                      key="form"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onSubmit={handleSubmit}
+                      className="space-y-6"
+                    >
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="text-sm font-bold text-gray-700">Full Name</label>
+                          <input 
+                            required
+                            type="text" 
+                            placeholder="John Doe"
+                            className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-sm font-bold text-gray-700">Email Address</label>
+                          <input 
+                            required
+                            type="email" 
+                            placeholder="john@example.com"
+                            className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-gray-700">Subject</label>
+                        <select className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all appearance-none">
+                          <option>Property Inquiry</option>
+                          <option>Construction Project</option>
+                          <option>Consultancy</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-bold text-gray-700">Message</label>
+                        <textarea 
+                          required
+                          rows={5}
+                          placeholder="How can we help you?"
+                          className="w-full px-6 py-4 bg-gray-50 border-none rounded-2xl focus:ring-2 focus:ring-brand-blue/20 outline-none transition-all resize-none"
+                        ></textarea>
+                      </div>
+                      <button 
+                        disabled={formStatus === 'submitting'}
+                        className="w-full py-5 bg-brand-orange text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-brand-orange/90 transition-all shadow-xl shadow-brand-orange/20 disabled:opacity-70"
+                      >
+                        {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+                        <Send size={20} />
+                      </button>
+                    </motion.form>
+                  )}
+                </AnimatePresence>
               </div>
             </div>
           </div>

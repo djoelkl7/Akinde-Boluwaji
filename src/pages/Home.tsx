@@ -4,7 +4,7 @@ import SectionHeading from '@/src/components/SectionHeading';
 import PropertyCard from '@/src/components/PropertyCard';
 import ServiceCard from '@/src/components/ServiceCard';
 import TestimonialCard from '@/src/components/TestimonialCard';
-import { Building2, Home as HomeIcon, Key, Users, Briefcase, Ruler, ArrowRight } from 'lucide-react';
+import { Building2, Home as HomeIcon, Key, Users, Briefcase, Ruler, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
@@ -229,6 +229,48 @@ export default function Home() {
                 description={service.description}
                 index={index} 
               />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            subtitle="Our Workflow"
+            title="Our Construction Process"
+            description="We follow a systematic approach to ensure every project is delivered on time and with the highest quality."
+          />
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-100 -translate-y-1/2 z-0" />
+            
+            {[
+              { icon: Users, title: "Consultation", desc: "Understanding your vision and requirements." },
+              { icon: Ruler, title: "Design", desc: "Architectural planning and structural design." },
+              { icon: Building2, title: "Construction", desc: "Building with precision and quality materials." },
+              { icon: ShieldCheck, title: "Quality Check", desc: "Rigorous inspection and safety standards." },
+              { icon: Key, title: "Handover", desc: "Delivering your dream property on time." }
+            ].map((step, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="relative z-10 flex flex-col items-center text-center space-y-4"
+              >
+                <div className="w-16 h-16 bg-white border-4 border-gray-50 rounded-full flex items-center justify-center text-brand-blue shadow-lg group-hover:border-brand-orange transition-colors">
+                  <step.icon size={24} />
+                </div>
+                <div className="bg-brand-orange text-white w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold absolute -top-2 -right-2 lg:right-auto lg:left-1/2 lg:-translate-x-1/2 lg:top-12">
+                  {i + 1}
+                </div>
+                <h4 className="font-bold text-lg text-brand-dark pt-4">{step.title}</h4>
+                <p className="text-sm text-gray-500">{step.desc}</p>
+              </motion.div>
             ))}
           </div>
         </div>
