@@ -84,35 +84,81 @@ export default function Home() {
       <Hero />
 
       {/* About Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1582408921715-18e7806365c1?auto=format&fit=crop&q=80&w=800" 
-                  alt="Modern Building" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Image Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                <motion.div 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-4"
+                >
+                  <div className="rounded-3xl overflow-hidden shadow-lg h-64">
+                    <img 
+                      src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=400" 
+                      alt="Lead Engineer" 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="rounded-3xl overflow-hidden shadow-lg h-48">
+                    <img 
+                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=400" 
+                      alt="Construction Site" 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </motion.div>
+                <motion.div 
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-4 pt-12"
+                >
+                  <div className="rounded-3xl overflow-hidden shadow-lg h-48">
+                    <img 
+                      src="https://images.unsplash.com/photo-1573164060897-425941c30241?auto=format&fit=crop&q=80&w=400" 
+                      alt="Architect" 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="rounded-3xl overflow-hidden shadow-lg h-64">
+                    <img 
+                      src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=400" 
+                      alt="Engineering Team" 
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </motion.div>
               </div>
-              <div className="absolute -bottom-8 -right-8 z-20 bg-brand-orange text-white p-8 rounded-3xl shadow-xl hidden md:block">
-                <div className="text-4xl font-bold mb-1">15+</div>
-                <div className="text-sm font-medium uppercase tracking-wider opacity-80">Years of Experience</div>
+              
+              {/* Experience Badge */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-brand-orange text-white p-8 rounded-full shadow-2xl border-8 border-white flex flex-col items-center justify-center w-40 h-40">
+                <div className="text-3xl font-bold">15+</div>
+                <div className="text-[10px] font-bold uppercase tracking-widest text-center leading-tight">Years of<br/>Excellence</div>
               </div>
-              <div className="absolute -top-8 -left-8 w-64 h-64 bg-brand-blue/5 rounded-full -z-0" />
             </div>
 
             <div className="space-y-8">
               <SectionHeading 
                 align="left"
                 subtitle="About Our Company"
-                title="We are the Leaders in Real Estate & Construction"
-                description="AKINDE BOLUWAJI – HOME & PROPERTIES is a premier real estate firm dedicated to providing top-tier housing solutions and construction services. With RC 3692284, we are a legally recognized entity committed to integrity and excellence."
+                title="Engineering the Future of Modern Living"
+                description="AKINDE BOLUWAJI – HOME & PROPERTIES is not just a real estate firm; we are a collective of visionary engineers, architects, and property experts. With RC 3692284, we bring a legacy of precision and integrity to every project we undertake."
               />
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex gap-4">
+              <p className="text-gray-600 leading-relaxed">
+                Our team of certified professionals ensures that every brick laid and every property managed meets the highest international standards. We combine traditional craftsmanship with modern engineering technology to deliver homes that stand the test of time.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div className="flex gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
                   <div className="w-12 h-12 bg-brand-orange/10 rounded-xl flex items-center justify-center text-brand-orange shrink-0">
                     <HomeIcon size={24} />
                   </div>
@@ -121,7 +167,7 @@ export default function Home() {
                     <p className="text-gray-500 text-sm">Built with precision and modern aesthetics.</p>
                   </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
                   <div className="w-12 h-12 bg-brand-blue/10 rounded-xl flex items-center justify-center text-brand-blue shrink-0">
                     <Users size={24} />
                   </div>
@@ -132,14 +178,29 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex items-center gap-6">
                 <Link 
                   to="/about"
-                  className="inline-flex items-center gap-2 text-brand-blue font-bold hover:text-brand-orange transition-colors group"
+                  className="bg-brand-blue text-white px-8 py-4 rounded-full font-bold hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/20 flex items-center gap-2 group"
                 >
                   Learn More About Us
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
+                <div className="hidden sm:flex items-center gap-3">
+                  <div className="flex -space-x-3">
+                    {[1, 2, 3].map((i) => (
+                      <img 
+                        key={i}
+                        src={`https://i.pravatar.cc/150?u=${i}`} 
+                        className="w-10 h-10 rounded-full border-2 border-white"
+                        alt="Team Member"
+                      />
+                    ))}
+                  </div>
+                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                    Join 1.2k+ Satisfied Clients
+                  </div>
+                </div>
               </div>
             </div>
           </div>

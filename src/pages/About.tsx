@@ -76,6 +76,64 @@ export default function About() {
         </div>
       </section>
 
+      {/* Our Team Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            subtitle="Our Experts"
+            title="Meet Our Professional Team"
+            description="Our team consists of highly skilled engineers, architects, and consultants dedicated to excellence."
+          />
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                name: "Engr. Boluwaji Akinde",
+                role: "CEO & Lead Engineer",
+                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
+              },
+              {
+                name: "Arc. Sarah Johnson",
+                role: "Senior Architect",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"
+              },
+              {
+                name: "Engr. David Chen",
+                role: "Structural Engineer",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400"
+              },
+              {
+                name: "Michael Thompson",
+                role: "Project Manager",
+                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400"
+              }
+            ].map((member, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all group"
+              >
+                <div className="h-80 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h4 className="text-xl font-bold text-brand-dark mb-1">{member.name}</h4>
+                  <p className="text-brand-orange text-sm font-semibold uppercase tracking-wider">{member.role}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-gray-50">
         <div className="container mx-auto px-4">
