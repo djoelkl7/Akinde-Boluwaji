@@ -90,22 +90,22 @@ export default function About() {
               {
                 name: "Engr. Boluwaji Akinde",
                 role: "CEO & Lead Engineer",
-                image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400"
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400"
               },
               {
-                name: "Arc. Sarah Johnson",
+                name: "Arc. Funmi Adeyemi",
                 role: "Senior Architect",
-                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400"
+                image: "https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&q=80&w=400"
               },
               {
-                name: "Engr. David Chen",
+                name: "Engr. Kofi Mensah",
                 role: "Structural Engineer",
-                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400"
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400"
               },
               {
-                name: "Michael Thompson",
+                name: "Tunde Olatunji",
                 role: "Project Manager",
-                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400"
+                image: "https://images.unsplash.com/photo-1589386417686-0d34b5903d23?auto=format&fit=crop&q=80&w=400"
               }
             ].map((member, i) => (
               <motion.div 

@@ -98,16 +98,16 @@ export default function Home() {
                 >
                   <div className="rounded-3xl overflow-hidden shadow-lg h-64">
                     <img 
-                      src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=400" 
-                      alt="Lead Engineer" 
+                      src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400" 
+                      alt="African Lead Engineer" 
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
                   </div>
                   <div className="rounded-3xl overflow-hidden shadow-lg h-48">
                     <img 
-                      src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=400" 
-                      alt="Construction Site" 
+                      src="https://images.unsplash.com/photo-1589386417686-0d34b5903d23?auto=format&fit=crop&q=80&w=400" 
+                      alt="African Construction Expert" 
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
@@ -121,16 +121,16 @@ export default function Home() {
                 >
                   <div className="rounded-3xl overflow-hidden shadow-lg h-48">
                     <img 
-                      src="https://images.unsplash.com/photo-1573164060897-425941c30241?auto=format&fit=crop&q=80&w=400" 
-                      alt="Architect" 
+                      src="https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&q=80&w=400" 
+                      alt="African Architect" 
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
                   </div>
                   <div className="rounded-3xl overflow-hidden shadow-lg h-64">
                     <img 
-                      src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=400" 
-                      alt="Engineering Team" 
+                      src="https://images.unsplash.com/photo-1567532939604-b6c5b0ad2e01?auto=format&fit=crop&q=80&w=400" 
+                      alt="African Engineering Team" 
                       className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                       referrerPolicy="no-referrer"
                     />
@@ -148,13 +148,13 @@ export default function Home() {
             <div className="space-y-8">
               <SectionHeading 
                 align="left"
-                subtitle="About Our Company"
-                title="Engineering the Future of Modern Living"
-                description="AKINDE BOLUWAJI – HOME & PROPERTIES is not just a real estate firm; we are a collective of visionary engineers, architects, and property experts. With RC 3692284, we bring a legacy of precision and integrity to every project we undertake."
+                subtitle="Excellence in Engineering"
+                title="Pioneering Modern Real Estate & Construction"
+                description="AKINDE BOLUWAJI – HOME & PROPERTIES is a premier multi-disciplinary firm where engineering precision meets architectural artistry. With RC 3692284, we have established ourselves as a benchmark for quality and structural integrity in the Nigerian real estate landscape."
               />
               
               <p className="text-gray-600 leading-relaxed">
-                Our team of certified professionals ensures that every brick laid and every property managed meets the highest international standards. We combine traditional craftsmanship with modern engineering technology to deliver homes that stand the test of time.
+                Our expertise spans the entire project lifecycle—from conceptual design and structural engineering to project management and property maintenance. We pride ourselves on a team of certified African professionals who are committed to delivering sustainable, world-class housing solutions that redefine the standard of luxury and safety.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -188,11 +188,15 @@ export default function Home() {
                 </Link>
                 <div className="hidden sm:flex items-center gap-3">
                   <div className="flex -space-x-3">
-                    {[1, 2, 3].map((i) => (
+                    {[
+                      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100",
+                      "https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&q=80&w=100",
+                      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100"
+                    ].map((src, i) => (
                       <img 
                         key={i}
-                        src={`https://i.pravatar.cc/150?u=${i}`} 
-                        className="w-10 h-10 rounded-full border-2 border-white"
+                        src={src} 
+                        className="w-10 h-10 rounded-full border-2 border-white object-cover"
                         alt="Team Member"
                       />
                     ))}
