@@ -4,7 +4,7 @@ import SectionHeading from '@/src/components/SectionHeading';
 import PropertyCard from '@/src/components/PropertyCard';
 import ServiceCard from '@/src/components/ServiceCard';
 import TestimonialCard from '@/src/components/TestimonialCard';
-import { Building2, Home as HomeIcon, Key, Users, Briefcase, Ruler, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Building2, Home as HomeIcon, Key, Users, Briefcase, Ruler, ArrowRight, ShieldCheck, CheckCircle2, Waves, Shield, Zap, Car, MapPin } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 
@@ -75,6 +75,31 @@ const testimonials = [
     role: "Investor",
     content: "I've worked with many real estate firms, but their consultancy services provided me with the insights I needed for a high-ROI investment.",
     image: "https://i.pravatar.cc/150?u=chidi"
+  }
+];
+
+const spotlightProperties = [
+  {
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200",
+    title: "The Grand Horizon Estate",
+    location: "Banana Island, Lagos",
+    price: "₦1,200,000,000",
+    description: "An architectural masterpiece nestled in the heart of Banana Island. This ultra-modern smart home offers unparalleled luxury with panoramic views of the Lagos lagoon.",
+    features: ["Smart Home Automation", "Private Infinity Pool", "24/7 Armed Security", "Cinema Room", "Underground Parking"],
+    beds: 7,
+    baths: 8,
+    sqft: 8500
+  },
+  {
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+    title: "Azure Waterfront Duplex",
+    location: "Eko Atlantic City, Lagos",
+    price: "₦850,000,000",
+    description: "Experience the pinnacle of coastal living in this stunning waterfront duplex. Designed with floor-to-ceiling glass walls to maximize natural light and ocean views.",
+    features: ["Ocean Front View", "Central Cooling System", "Gym & Spa", "Automated Gates", "Solar Power Backup"],
+    beds: 5,
+    baths: 6,
+    sqft: 5200
   }
 ];
 
@@ -270,6 +295,116 @@ export default function Home() {
                 </div>
                 <h4 className="font-bold text-lg text-brand-dark pt-4">{step.title}</h4>
                 <p className="text-sm text-gray-500">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Property Spotlight Section */}
+      <section className="py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+            subtitle="Premium Collection"
+            title="Property Spotlight"
+            description="A closer look at our most exclusive and luxurious listings currently on the market."
+          />
+          
+          <div className="space-y-24 mt-16">
+            {spotlightProperties.map((property, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 items-center`}
+              >
+                {/* Image Side */}
+                <div className="flex-1 relative group">
+                  <div className="rounded-[3rem] overflow-hidden shadow-2xl aspect-[4/3]">
+                    <img 
+                      src={property.image} 
+                      alt={property.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="absolute top-8 left-8 bg-brand-orange text-white px-6 py-2 rounded-full font-bold shadow-xl">
+                    Spotlight
+                  </div>
+                </div>
+
+                {/* Content Side */}
+                <div className="flex-1 space-y-8">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-brand-orange font-bold uppercase tracking-widest text-sm">
+                      <MapPin size={16} />
+                      {property.location}
+                    </div>
+                    <h3 className="text-4xl md:text-5xl font-display font-bold text-brand-dark">
+                      {property.title}
+                    </h3>
+                    <div className="text-3xl font-bold text-brand-blue">
+                      {property.price}
+                    </div>
+                  </div>
+
+                  <p className="text-gray-600 text-lg leading-relaxed">
+                    {property.description}
+                  </p>
+
+                  {/* Features Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {property.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-3 text-gray-700 font-medium">
+                        <div className="w-6 h-6 bg-brand-blue/10 rounded-full flex items-center justify-center text-brand-blue">
+                          <CheckCircle2 size={14} />
+                        </div>
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Quick Stats */}
+                  <div className="flex flex-wrap gap-8 py-8 border-y border-gray-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-brand-blue">
+                        <Building2 size={24} />
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-400 font-bold uppercase">Beds</div>
+                        <div className="font-bold">{property.beds} Bedrooms</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-brand-blue">
+                        <Key size={24} />
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-400 font-bold uppercase">Baths</div>
+                        <div className="font-bold">{property.baths} Bathrooms</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-brand-blue">
+                        <Ruler size={24} />
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-400 font-bold uppercase">Area</div>
+                        <div className="font-bold">{property.sqft} sqft</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <button className="bg-brand-blue text-white px-10 py-4 rounded-full font-bold hover:bg-brand-blue/90 transition-all shadow-xl shadow-brand-blue/20">
+                      View Details
+                    </button>
+                    <button className="border-2 border-brand-dark text-brand-dark px-10 py-4 rounded-full font-bold hover:bg-brand-dark hover:text-white transition-all">
+                      Schedule Tour
+                    </button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import SectionHeading from '@/src/components/SectionHeading';
 import PropertyCard from '@/src/components/PropertyCard';
-import { Search, Filter, SlidersHorizontal } from 'lucide-react';
+import { Search, Filter, SlidersHorizontal, MapPin, CheckCircle2, Bed, Bath, Square } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const allProperties = [
   {
@@ -69,6 +70,20 @@ const allProperties = [
   }
 ];
 
+const topPicks = [
+  {
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
+    title: "Azure Waterfront Duplex",
+    location: "Eko Atlantic City, Lagos",
+    price: "₦850,000,000",
+    description: "Experience the pinnacle of coastal living in this stunning waterfront duplex with floor-to-ceiling glass walls.",
+    beds: 5,
+    baths: 6,
+    sqft: 5200,
+    tag: "Top Pick"
+  }
+];
+
 export default function Properties() {
   const [filter, setFilter] = useState('All');
   const types = ['All', 'Villa', 'Duplex', 'House', 'Apartment', 'Penthouse', 'Bungalow'];
@@ -80,6 +95,65 @@ export default function Properties() {
   return (
     <main className="pt-32 pb-24 bg-gray-50">
       <div className="container mx-auto px-4">
+        {/* Top Picks Section */}
+        <div className="mb-24">
+          <SectionHeading 
+            subtitle="Premium Selection"
+            title="Our Top Pick"
+            description="The most exceptional property in our current collection."
+          />
+          
+          {topPicks.map((property, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="mt-12 bg-white rounded-[3rem] overflow-hidden shadow-xl border border-gray-100 flex flex-col lg:flex-row"
+            >
+              <div className="lg:w-1/2 h-[400px] lg:h-auto relative">
+                <img 
+                  src={property.image} 
+                  alt={property.title} 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute top-8 left-8 bg-brand-orange text-white px-6 py-2 rounded-full font-bold shadow-xl">
+                  {property.tag}
+                </div>
+              </div>
+              <div className="lg:w-1/2 p-12 flex flex-col justify-center space-y-6">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2 text-brand-orange font-bold uppercase tracking-widest text-xs">
+                    <MapPin size={14} />
+                    {property.location}
+                  </div>
+                  <h3 className="text-3xl font-display font-bold text-brand-dark">{property.title}</h3>
+                  <div className="text-2xl font-bold text-brand-blue">{property.price}</div>
+                </div>
+                <p className="text-gray-500 leading-relaxed">{property.description}</p>
+                <div className="grid grid-cols-3 gap-4 py-6 border-y border-gray-50">
+                  <div className="flex items-center gap-2">
+                    <Bed size={20} className="text-brand-blue" />
+                    <span className="text-sm font-bold">{property.beds} Beds</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Bath size={20} className="text-brand-blue" />
+                    <span className="text-sm font-bold">{property.baths} Baths</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Square size={20} className="text-brand-blue" />
+                    <span className="text-sm font-bold">{property.sqft} sqft</span>
+                  </div>
+                </div>
+                <button className="bg-brand-blue text-white w-full py-4 rounded-2xl font-bold hover:bg-brand-blue/90 transition-all shadow-lg shadow-brand-blue/20">
+                  View Full Details
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
         <SectionHeading 
           subtitle="Our Catalog"
           title="Find Your Perfect Property"
