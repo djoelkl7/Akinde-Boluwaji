@@ -52,13 +52,13 @@ export default function Footer() {
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-brand-orange shrink-0">
                   <Phone size={18} />
                 </div>
-                <span>+234 800 000 0000</span>
+                <span>0803 591 1163</span>
               </li>
               <li className="flex gap-4 items-center">
                 <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-brand-orange shrink-0">
                   <Mail size={18} />
                 </div>
-                <span>info@akindeboluwaji.com</span>
+                <span>akinbush@gmail.com</span>
               </li>
             </ul>
           </div>

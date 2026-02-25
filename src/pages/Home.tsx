@@ -512,10 +512,10 @@ export default function Home() {
                   Contact Us Now
                 </Link>
                 <a 
-                  href="tel:+2348000000000"
+                  href="tel:+2348035911163"
                   className="bg-white/10 text-white border border-white/20 px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-all text-center"
                 >
-                  Call: +234 800 000 0000
+                  Call: 0803 591 1163
                 </a>
               </div>
             </div>

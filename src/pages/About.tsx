@@ -225,7 +225,7 @@ export default function About() {
                     </div>
                     <div>
                       <h4 className="font-bold text-lg mb-1">Phone Number</h4>
-                      <p className="text-white/70">+234 800 000 0000</p>
+                      <p className="text-white/70">0803 591 1163</p>
                     </div>
                   </div>
                   <div className="flex gap-6 items-start">
@@ -234,7 +234,7 @@ export default function About() {
                     </div>
                     <div>
                       <h4 className="font-bold text-lg mb-1">Email Address</h4>
-                      <p className="text-white/70">info@akindeboluwaji.com</p>
+                      <p className="text-white/70">akinbush@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex gap-6 items-start">

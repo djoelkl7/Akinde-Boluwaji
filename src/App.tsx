@@ -48,7 +48,7 @@ function FloatingActions() {
       </AnimatePresence>
 
       <motion.a
-        href="https://wa.me/2348000000000"
+        href="https://wa.me/2348035911163"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, scale: 0.5, y: 20 }}
